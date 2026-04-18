@@ -1,16 +1,46 @@
+import json
+
+import time
+tempo = 3
+
 lista_tarefas = []
+
+def salvar_dados():
+    with open("dados.json", "w") as arquivo:
+        json.dump(lista_tarefas, arquivo)
+
+
+def carregar_dados():
+    global lista_tarefas
+    try:
+        with open("dados.json", "r") as arquivo:
+           lista_tarefas = json.load(arquivo)
+    except FileNotFoundError:
+        print("Nenhum dado encontrado!")
+        lista_tarefas = []
+
 
 def adicionar_tarefa(descricao):
     tarefa = {
-        "descricao": descricao,
-        "concluida": False
+        "descricao": descricao, "concluida": False
     }
+    if descricao == lista_tarefas:
+        print("Está tarefa já existe")
+    else:
+        lista_tarefas.append(tarefa)
+        print("Tarefa adicionada com sucesso!!")
 
-    lista_tarefas.append(tarefa)
-    print("Tarefa adicionada com sucesso!!") 
-    #esté print aq é pra quando uma opcao no main ser selecionada
-    # ele mostrar o print pra saber se deu certo
+    salvar_dados()
+
 
 def listar_tarefas():
-    for tarefa in lista_tarefas:
-        print(tarefa["descricao"])
+    for indice, tarefa in enumerate(lista_tarefas):
+
+        if tarefa["concluida"] == True:
+            print(f"{indice} - [X] {tarefa['descricao']} | concluída")
+        else:
+            print(f"{indice} - [] {tarefa['descricao']} | pendente")
+
+
+def concluir_tarefa(indice):
+    lista_tarefas[indice]["concluida"] = True
