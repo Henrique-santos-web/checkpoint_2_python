@@ -9,7 +9,8 @@ while True:
     print("1- Adicionar")
     print("2- Listar")
     print("3- Atualizar Tarefa")
-    print("4- Sair")
+    print("4- Remover Tarefa")
+    print("5- Sair")
     opcao = int(input("Escolha uma opção: "))
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -22,7 +23,6 @@ while True:
             os.system('cls' if os.name == 'nt' else 'clear')
         case 2:
             listar_tarefas()
-            print("Tarefa limpa!")
             time.sleep(TEMPO_FINALIZACAO)
             os.system('cls' if os.name == 'nt' else 'clear')
         case 3:
@@ -30,17 +30,21 @@ while True:
                 try:
                     listar_tarefas()
                     tarefa_concluida = int(input("Digite em números qual tarefa você concluiu: "))
+                    print("Bom trabalho!")
                     concluir_tarefa(tarefa_concluida)
-                    time.sleep(TEMPO_FINALIZACAO)
-                    os.system('cls' if os.name == 'nt' else 'clear') 
+                    salvar_dados()
+                    time.sleep(1.5)
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     break
                 except IndexError:
                     print("Digite apenas números")
                     time.sleep(TEMPO_FINALIZACAO)
                     os.system('cls' if os.name == 'nt' else 'clear')
                     continue
-            os.system('cls' if os.name == 'nt' else 'clear')    
+            os.system('cls' if os.name == 'nt' else 'clear')  
         case 4:
+            exclusao = int(input("Digite a tarefa a ser excluída"))
+        case 5:
             print("Finalizando aplicação")
             time.sleep(TEMPO_FINALIZACAO)
             os.system('cls' if os.name == 'nt' else 'clear')

@@ -1,6 +1,4 @@
-import json
-
-import time
+import json, time
 tempo = 3
 
 lista_tarefas = []
@@ -44,3 +42,15 @@ def listar_tarefas():
 
 def concluir_tarefa(indice):
     lista_tarefas[indice]["concluida"] = True
+
+
+def excluir_tarefa(excluir):
+    for indice in enumerate(lista_tarefas):
+        try:
+            if indice == excluir:
+                print("Tarefa excluída!")
+                lista_tarefas.pop(indice)
+            else:
+                print("Digite um número válido")
+        except ValueError:
+            print("Digite apenas a posição da tarefa!")
