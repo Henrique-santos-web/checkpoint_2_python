@@ -45,12 +45,7 @@ def concluir_tarefa(indice):
 
 
 def excluir_tarefa(excluir):
-    for indice in enumerate(lista_tarefas):
-        try:
-            if indice == excluir:
-                print("Tarefa excluída!")
-                lista_tarefas.pop(indice)
-            else:
-                print("Digite um número válido")
-        except ValueError:
-            print("Digite apenas a posição da tarefa!")
+    for indice, tarefa in enumerate(lista_tarefas):
+        if excluir == indice:
+            print("Tarefa excluída!")
+            lista_tarefas.pop(indice)
