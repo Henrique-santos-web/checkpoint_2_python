@@ -60,7 +60,7 @@ while True:
                     except IndexError:
                         print("Digite apenas o número da tarefa")
                         time.sleep(1.5)
-                        so.system('cls' if os.name == 'nt' else 'clear')
+                        os.system('cls' if os.name == 'nt' else 'clear')
                         continue
             case 5:
                 print("Finalizando aplicação")
